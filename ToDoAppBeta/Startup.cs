@@ -10,11 +10,9 @@ namespace ToDoAppBeta
 {
     public class Startup
     {
-        private readonly ToDoAppContext context;
-        public Startup(IConfiguration configuration, ToDoAppContext context)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            this.context = context;
         }
 
         public IConfiguration Configuration { get; }
@@ -56,7 +54,6 @@ namespace ToDoAppBeta
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-            context.Database.EnsureCreated();
         }
     }
 }
