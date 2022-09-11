@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ToDoAppModel.ToDoList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>ToDo Lists</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+@foreach (var item in Model) {
+    <div class="card text-left border-dark mb-3">
+        <div class="card-body">
+            <h5 class="card-title">@item.Name</h5>
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Items</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </div>
+    </div>
+}

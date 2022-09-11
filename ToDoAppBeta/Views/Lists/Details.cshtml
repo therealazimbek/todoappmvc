@@ -1,0 +1,31 @@
+﻿@model ViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h4>@Model.ToDoList.Name List Items</h4>    
+        @foreach (var item in Model.ToDoItems)
+        {
+            <div class="card text-left border-dark mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">@item.Description</p>
+                <p class="card-text">Due Date: @item.DueDate.ToString("ddd, dd/MM/yyyy")</p>
+                    <p class="card-text">Status: @item.Status</p>
+                    <a class="btn btn-primary" asp-controller="Items" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-info" asp-controller="Items" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn btn-danger" asp-controller="Items" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    
+                </div>
+            </div>
+        }
+    <p>
+        <a asp-controller="Items" asp-action="Create">Add New Item</a>
+    </p>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ToDoList.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
