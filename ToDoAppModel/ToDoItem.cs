@@ -19,6 +19,8 @@ namespace ToDoAppModel
         public DateTime DueDate { get; set; }
         public ItemStatus Status { get; set; }
         public int TodoListId { get; set; }
+        public bool IsHidden { get; set; }
+        public bool Remind { get; set; }
         [JsonIgnore]
         public virtual ToDoList ToDoList { get; set; }
     }

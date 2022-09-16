@@ -1,0 +1,66 @@
+﻿@using ToDoAppModel
+@model ToDoAppModel.ToDoItem
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="back-edit">
+    <a class="img-link" asp-controller="Lists" asp-action="Details" asp-route-id="@Model.TodoListId" title="Back to lists"><img src="~/images/previous.png" /></a>
+    <h1>Edit task</h1>
+</div>
+<hr />
+<div class="row create">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="control-label"></label>
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="@ItemStatus.Completed">Completed</option>
+                    <option value="@ItemStatus.InProgress">In Progress</option>
+                    <option value="@ItemStatus.NotStarted">Not Started</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TodoListId" class="control-label"></label>
+                <select asp-for="TodoListId" class="form-control" asp-items="ViewBag.TodoListId"></select>
+                <span asp-validation-for="TodoListId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsHidden" /> @Html.DisplayNameFor(model => model.IsHidden)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Remind" /> @Html.DisplayNameFor(model => model.Remind)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

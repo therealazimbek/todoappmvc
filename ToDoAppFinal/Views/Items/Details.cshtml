@@ -1,0 +1,66 @@
+﻿@model ToDoAppModel.ToDoItem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="back-edit">
+    <a class="img-link" asp-controller="Lists" asp-action="Details" asp-route-id="@Model.TodoListId" title="Back to lists"><img src="~/images/previous.png" /></a>
+    <h1>@Model.Title details</h1>
+    <a class="img-link" asp-controller="Items" asp-action="Edit" asp-route-id="@Model.Id" title="Edit list"><img src="~/images/edit.png" /></a>
+</div>
+<hr />
+<div class="item-details">
+
+    <dl class="row item-det">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsHidden)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.IsHidden)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Remind)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.Remind)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ToDoList)
+        </dt>
+        <dd class = "col-sm-4">
+            @Html.DisplayFor(model => model.ToDoList.Name)
+        </dd>
+    </dl>
+</div>
+

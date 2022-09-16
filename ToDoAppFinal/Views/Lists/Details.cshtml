@@ -1,0 +1,49 @@
+﻿@model ViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="back-edit">
+    <a class="img-link" asp-action="Index"title="Back to lists"><img src="~/images/previous.png" /></a> 
+    <h1>@Model.ToDoList.Name tasks</h1>
+    <a class="img-link" asp-action="Edit" asp-route-id="@Model.ToDoList.Id" title="Edit list"><img src="~/images/edit.png" /></a>
+</div>
+
+<div class="top">    
+    <div class="btn-group">
+        <a asp-controller="Items" asp-action="Create" class="btn btn-success">New task</a>
+        @if (!Model.ShowCompletedTasks){
+            <a asp-controller="Lists" asp-action="Details" asp-route-showCompletedTasks="@Model.ShowCompletedTasks" class="btn btn-primary">Completed tasks</a>
+        }
+        else {
+            <a asp-controller="Lists" asp-action="Details" asp-route-showCompletedTasks="!@Model.ShowCompletedTasks" class="btn btn-secondary">Hide completed tasks</a>
+
+        }
+    </div>
+</div>
+
+<ol class="list-group list-group-light list-group-numbered">
+    @foreach (var item in Model.ToDoItems)
+    {
+        <partial name="ItemSummary" model="item"/>
+    }
+</ol>
+
+@foreach (var item in Model.ToDoItems) 
+{
+    @if (item.Remind == true && item.Status != ToDoAppModel.ItemStatus.Completed)
+    {
+        @if (item.DueDate.Date == DateTime.Now.Date)
+        {
+            <script>
+
+                
+                alert('Do not forget about task: @item.Title!');
+
+                
+
+            </script>
+        }
+    }
+}

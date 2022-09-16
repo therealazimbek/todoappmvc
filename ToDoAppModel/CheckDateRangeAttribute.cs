@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace ToDoAppModel
 {
@@ -10,7 +8,7 @@ namespace ToDoAppModel
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             DateTime dt = (DateTime)value;
-            if (dt >= DateTime.UtcNow)
+            if (dt >= DateTime.Today.Date)
             {
                 return ValidationResult.Success;
             }

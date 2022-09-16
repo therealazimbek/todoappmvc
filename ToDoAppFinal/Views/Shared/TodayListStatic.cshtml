@@ -1,0 +1,12 @@
+﻿@model ViewModel
+
+<ol class="list-group list-group-light list-group-numbered">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                <span class="badge badge-primary rounded-pill">@Model.ToDoItems.Count(i => i.DueDate.Date == DateTime.Today && i.Status != ToDoAppModel.ItemStatus.Completed)</span>
+                <a asp-controller="Lists" asp-action="Details" asp-route-id="@Model.TodayListId">Today</a>
+            </div>
+        </div>
+    </li>
+</ol>

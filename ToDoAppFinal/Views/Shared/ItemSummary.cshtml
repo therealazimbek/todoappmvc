@@ -1,0 +1,43 @@
+﻿@model ToDoAppModel.ToDoItem
+
+<li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+        <div class="fw-bold">
+            <a asp-controller="Items" asp-action="Details" asp-route-id="@Model.Id">@Model.Title</a>
+            @if (@Model.Remind == true)
+            {
+                <img src="~/images/reminder.png" class="reminder" />
+            }
+        </div>
+
+        @if (@Model.Status == ToDoAppModel.ItemStatus.Completed)
+        {
+            <span class="badge badge-success rounded-pill">Completed</span>
+        }
+        else if (@Model.DueDate.Date == DateTime.Today && @Model.DueDate.Date >= DateTime.Now.Date)
+        {
+            <span class="badge badge-primary rounded-pill">Today</span>
+        }
+        else if (@Model.DueDate.Date < DateTime.Now.Date)
+        {
+            <span class="badge badge-danger rounded-pill">Late</span>
+        }
+        else
+        {
+            <span class="badge badge-primary rounded-pill">@Model.DueDate.ToString("ddd, dd/MM/yyyy")</span>
+        }
+
+
+    </div>
+    <div class="btn-group">
+        @if (@Model.Status != ToDoAppModel.ItemStatus.Completed)
+        {
+            <a href="@Url.Action("Complete","Items", new { id = @Model.Id })" class="btn btn-outline-success">Comlete</a>
+        }
+        else
+        {
+            <a href="@Url.Action("Complete","Items", new { id = @Model.Id })" class="btn btn-outline-success disabled">Comleted</a>
+        }
+        <a asp-controller="Items" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+    </div>
+</li>
