@@ -27,7 +27,7 @@ namespace ToDoAppFinal.Controllers
             {
                 ToDoItems = await _context.ToDoItems.ToListAsync(),
                 ShowHidden = false,
-                ToDoLists = await _context.ToDoLists.Where(l => l.IsHidden == false).OrderByDescending(l => l.Id).Take(4).ToListAsync(),
+                ToDoLists = await _context.ToDoLists.Where(l => l.IsHidden == false).Take(4).ToListAsync(),
                 TodayListId = _context.ToDoLists.FirstOrDefault(l => l.Name == "Today").Id
             };
 

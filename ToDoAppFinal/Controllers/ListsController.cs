@@ -50,7 +50,7 @@ namespace ToDoAppFinal.Controllers
             {
                 CurrentPage = listPage,
                 ItemsPerPage = PageSize,
-                TotalItems = _context.ToDoLists.Count(l => l.IsHidden == false)
+                TotalItems = _context.ToDoLists.Count(l => l.IsHidden == false) - 1
             };
             return View(view);
         }
@@ -79,11 +79,11 @@ namespace ToDoAppFinal.Controllers
             {
                 if (toDoList.Name == "Today")
                 {
-                    view.ToDoItems = await _context.ToDoItems.Where(i => i.DueDate.Date == System.DateTime.Today).ToListAsync();
+                    view.ToDoItems = await _context.ToDoItems.Where(i => i.DueDate.Date == System.DateTime.Today && i.Status == ItemStatus.Completed).ToListAsync();
                 }
                 else
                 {
-                    view.ToDoItems = await _context.ToDoItems.Where(i => i.TodoListId == id).ToListAsync();
+                    view.ToDoItems = await _context.ToDoItems.Where(i => i.TodoListId == id && i.Status == ItemStatus.Completed).ToListAsync();
                 }
                 view.ShowCompletedTasks = true;
                 return View(view);
