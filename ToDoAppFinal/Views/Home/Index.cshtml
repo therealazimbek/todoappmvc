@@ -6,7 +6,17 @@
 
 <div class="home-text">
     <h4>Hi! Have a great day!</h4>
-    <p>Today you have @Model.ToDoItems.Count(i => i.DueDate.Date == DateTime.Today && i.Status != ToDoAppModel.ItemStatus.Completed) tasks</p>
+    @{
+        int tasks = @Model.ToDoItems.Count(i => i.DueDate.Date == DateTime.Today && i.Status != ToDoAppModel.ItemStatus.Completed);
+    }
+    @if (tasks == 0) 
+    {
+        <p>No tasks so far!</p>
+    }
+    else 
+    {
+        <p>Today you have  tasks</p>
+    }
 </div>
 <partial name="TodayListStatic" />
 <br />

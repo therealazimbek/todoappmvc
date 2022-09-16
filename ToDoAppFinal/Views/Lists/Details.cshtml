@@ -5,7 +5,7 @@
 }
 
 <div class="back-edit">
-    <a class="img-link" asp-action="Index"title="Back to lists"><img src="~/images/previous.png" /></a> 
+    <a class="img-link" href="javascript:void(0);" onclick="history.go(-1);" title="Back"><img src="~/images/previous.png" /></a>
     <h1>@Model.ToDoList.Name tasks</h1>
     <a class="img-link" asp-action="Edit" asp-route-id="@Model.ToDoList.Id" title="Edit list"><img src="~/images/edit.png" /></a>
 </div>
