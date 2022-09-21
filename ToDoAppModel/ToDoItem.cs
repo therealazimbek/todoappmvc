@@ -8,7 +8,7 @@ namespace ToDoAppModel
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(60)]
+        [StringLength(60, MinimumLength = 2)]
         public string Title { get; set; }
         [StringLength(120)]
         public string Description { get; set; }
