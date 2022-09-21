@@ -63,14 +63,14 @@ namespace ToDoAppFinal.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             var toDoList = await _context.ToDoLists
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (toDoList == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             var view = new ViewModel
@@ -148,13 +148,13 @@ namespace ToDoAppFinal.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             var toDoList = await _context.ToDoLists.FindAsync(id);
             if (toDoList == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
             return View(toDoList);
         }
@@ -166,7 +166,7 @@ namespace ToDoAppFinal.Controllers
         {
             if (id != toDoList.Id)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             if (ModelState.IsValid)
@@ -180,7 +180,7 @@ namespace ToDoAppFinal.Controllers
                 {
                     if (!ToDoListExists(toDoList.Id))
                     {
-                        return NotFound();
+                        return RedirectToAction("NotFoundPage", "Error");
                     }
                     else
                     {
@@ -197,14 +197,14 @@ namespace ToDoAppFinal.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             var toDoList = await _context.ToDoLists
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (toDoList == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             return View(toDoList);
@@ -225,14 +225,14 @@ namespace ToDoAppFinal.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             var toDoList = await _context.ToDoLists
                 .FindAsync(id);
             if (toDoList == null)
             {
-                return NotFound();
+                return RedirectToAction("NotFoundPage", "Error");
             }
 
             toDoList.IsHidden = !toDoList.IsHidden;

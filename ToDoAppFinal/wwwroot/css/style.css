@@ -390,3 +390,12 @@ a img {
     background: linear-gradient(33deg, #e13680, #a43ab2);
     color: white;
 }
+
+.notfound {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.fof {
+    font-size: 80px;
+}
