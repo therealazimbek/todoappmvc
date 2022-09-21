@@ -117,7 +117,7 @@ namespace ToDoAppFinal.Controllers
             {
                 CurrentPage = page,
                 ItemsPerPage = ItemPageSize,
-                TotalItems = _context.ToDoItems.Count(i => i.Status != ItemStatus.Completed)
+                TotalItems = _context.ToDoItems.Count(i => i.TodoListId == id && i.Status != ItemStatus.Completed)
             };
 
             return View(view);
@@ -130,8 +130,6 @@ namespace ToDoAppFinal.Controllers
         }
 
         // POST: Home/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name")] ToDoList toDoList)
@@ -162,8 +160,6 @@ namespace ToDoAppFinal.Controllers
         }
 
         // POST: Home/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,IsHidden")] ToDoList toDoList)
