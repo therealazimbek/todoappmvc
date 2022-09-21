@@ -1,34 +1,27 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ToDoApp Beta</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <title>F.R.I.E.N.D.S</title>
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
-    <header class="d-flex justify-content-center py-3">
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link active" aria-current="page">Simple ToDo</a></li>
-            <li class="nav-item"><a asp-area="" asp-controller="Lists" asp-action="Index" class="nav-link">Lists</a></li>
-            <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a></li>
-            <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Privacy" class="nav-link">Privacy</a></li>
-        </ul>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+    <div class="flex-container">
+        <header class="flex-item item-1">
+            <a asp-controller="Home" asp-action="Index" class="header-nav">Home</a>
+            <a asp-controller="Home" asp-action="About" class="header-nav">About</a>
+        </header>
+        <main class="flex-item item-3">
+            <div class="main-container">
+                @RenderBody()
+            </div>
         </main>
+        <footer class="flex-item item-5">
+            <p class="footer-text">With love, Azimbek &hearts;</p>
+        </footer>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; @DateTime.Now.Year - ToDo App - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>      
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

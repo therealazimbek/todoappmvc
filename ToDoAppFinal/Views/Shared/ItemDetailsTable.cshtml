@@ -1,0 +1,36 @@
+﻿@model ToDoAppModel.ToDoItem
+
+<div class="table">
+    <table class="styled-table">
+        <tbody>
+            <tr>
+                <td class="attribute">Title</td>
+                <td>@Model.Title</td>
+            </tr>
+            <tr>
+                <td class="attribute">Description</td>
+                <td>@Model.Description</td>
+            </tr>
+            <tr>
+                <td class="attribute">Created</td>
+                <td>@Model.Created.ToString("ddd, dd/MM/yyyy")</td>
+            </tr>
+            <tr>
+                <td class="attribute">Due Date</td>
+                <td>@Model.DueDate.ToString("ddd, dd/MM/yyyy")</td>
+            </tr>
+            <tr>
+                <td class="attribute">Is Hidden</td>
+                <td>@Model.IsHidden</td>
+            </tr>
+            <tr>
+                <td class="attribute">Remind</td>
+                <td>@Model.Remind</td>
+            </tr>
+            <tr>
+                <td class="attribute">ToDoList</td>
+                <td>@Model.ToDoList.Name</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

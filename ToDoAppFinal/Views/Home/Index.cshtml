@@ -4,40 +4,60 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="home-text">
-    <h4>Hi! Have a great day!</h4>
+<div class="greeting">
+    <h1>&#128075;Welcome to Simple ToDo app!</h1>
     @{
         int tasks = @Model.ToDoItems.Count(i => i.DueDate.Date == DateTime.Today && i.Status != ToDoAppModel.ItemStatus.Completed);
     }
-    @if (tasks == 0) 
+    @if (tasks == 0)
     {
-        <p>No tasks so far!</p>
+        <h3>No tasks so far!</h3>
     }
-    else 
+    else
     {
-        <p>Today you have  tasks</p>
+        <h3>Today you have  tasks</h3>
     }
 </div>
-<partial name="TodayListStatic" />
-<br />
+<div class="actions">
+    <a title="Edit list" asp-controller="Home" asp-action="Create" class="action new">New list</a>
+    @if (!Model.ShowHidden)
+    {
+        <a asp-controller="Home" asp-action="Index" asp-route-showHidden="@Model.ShowHidden" class="action hidden">Hidden lists</a>
+    }
+    else
+    {
+        <a asp-controller="Home" asp-action="Index" asp-route-showHidden="!@Model.ShowHidden" class="action hidden-active">Hide lists</a>
 
-<ol class="list-group list-group-light list-group-numbered">
-    
+    }
+</div>
+<div class="lists">
+    <partial name="TodayListStatic" />
+
     @foreach (var item in Model.ToDoLists.Where(l => l.Name != "Today"))
-   {
-    <li class="list-group-item d-flex justify-content-between align-items-start">
-        <div class="ms-2 me-auto">
-                <div class="fw-bold">
-                     <span class="badge badge-primary rounded-pill">@Model.ToDoItems.Count(i => i.TodoListId == item.Id && i.Status != ToDoAppModel.ItemStatus.Completed)</span>
-                    <a asp-controller="Lists" asp-action="Details" asp-route-id="@item.Id">@item.Name</a>
-                </div>
+    {
+        <div class="list">
+            <div class="list-title">
+                <h3><a asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">@item.Name</a></h3>
+                <span class="ok">@Model.ToDoItems.Count(i => i.TodoListId == item.Id && i.Status != ToDoAppModel.ItemStatus.Completed) tasks</span>
+            </div>
+            <div class="actions">
+                @if (item.IsHidden == false)
+                {
+                    <a href="@Url.Action("Hide","Home", new { id = item.Id })" class="action hide">Hide</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Hide","Home", new { id = item.Id })" class="action hide">Unhide</a>
+                }
+                <a asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id" class="action delete">Delete</a>
+            </div>
         </div>
-        <div class="btn-group">
-            <a asp-controller="Lists" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger">Delete</a>
-        </div>
-    </li>
-   }
-</ol>
-<div class="all">
-    <a asp-controller="Lists" asp-action="Index" class="btn btn-primary">All Lists</a>
+    }
+</div>
+
+<div class="pagination">
+    <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary" class="btn-group pull-right m-1">
+    </div>
 </div>

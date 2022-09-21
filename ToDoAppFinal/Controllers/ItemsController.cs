@@ -59,7 +59,7 @@ namespace ToDoAppFinal.Controllers
                 var list_id = toDoItem.TodoListId;
                 _context.Add(toDoItem);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Details", "Lists", new { id = list_id });
+                return RedirectToAction("Details", "Home", new { id = list_id });
             }
             ViewData["TodoListId"] = new SelectList(_context.ToDoLists, "Id", "Name", toDoItem.TodoListId);
             return View(toDoItem);
@@ -112,7 +112,7 @@ namespace ToDoAppFinal.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", "Lists", new { id = toDoItem.TodoListId });
+                return RedirectToAction("Details", "Home", new { id = toDoItem.TodoListId });
             }
             ViewData["TodoListId"] = new SelectList(_context.ToDoLists, "Id", "Name", toDoItem.TodoListId);
             return View(toDoItem);
@@ -146,7 +146,7 @@ namespace ToDoAppFinal.Controllers
             var list_id = toDoItem.TodoListId;
             _context.ToDoItems.Remove(toDoItem);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details", "Lists", new { id = list_id });
+            return RedirectToAction("Details", "Home", new { id = list_id });
         }
 
         public async Task<IActionResult> Complete(int? id)
@@ -168,7 +168,7 @@ namespace ToDoAppFinal.Controllers
             var list_id = toDoItem.TodoListId;
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Details", "Lists", new { id = list_id });
+            return RedirectToAction("Details", "Home", new { id = list_id });
         }
 
         private bool ToDoItemExists(int id)

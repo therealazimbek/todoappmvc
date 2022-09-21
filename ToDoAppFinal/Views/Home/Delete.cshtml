@@ -1,0 +1,25 @@
+﻿@model ToDoAppModel.ToDoList
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="list-deteails-title">
+    <div>
+        <div class="back-button">
+            <a title="Previous" class="emoji-action" href="javascript:void(0);" onclick="history.go(-1);">&#11013;</a>
+        </div>
+        <div>
+            <h2>Are you sure you want delete this item?</h2>
+            <h3>List name: @Model.Name</h3>
+        </div>
+    </div>
+</div>
+<div class="form">
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <input type="submit" value="Delete" class="del" />
+        </div>
+    </form>
+</div>

@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 using ToDoAppFinal.Models.ViewModels;
@@ -38,7 +38,21 @@ namespace ToDoAppFinal.Infrastructure
             {
                 TagBuilder tag = new TagBuilder("a");
 
-                tag.Attributes["href"] = urlHelper.Action(PageAction, new { listPage = i });
+                if (!string.IsNullOrEmpty(ViewContext.HttpContext.Request.Query["showCompletedTasks"].ToString())
+                    && !ViewContext.HttpContext.Request.Query["showCompletedTasks"].ToString().Contains("!"))
+                {
+                    tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i, showCompletedTasks = true });
+
+                }
+                else if (!string.IsNullOrEmpty(ViewContext.HttpContext.Request.Query["showHidden"])
+                    && !ViewContext.HttpContext.Request.Query["showHidden"].ToString().Contains("!"))
+                {
+                    tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i, showHidden = true });
+                }
+                else
+                {
+                    tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+                }
 
                 if (PageClassesEnabled)
                 {

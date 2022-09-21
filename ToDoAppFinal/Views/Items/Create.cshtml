@@ -4,44 +4,43 @@
     ViewData["Title"] = "Create";
 }
 
-<div class="back-edit">
-    <a class="img-link" href="javascript:void(0);" onclick="history.go(-1);" title="Back"><img src="~/images/previous.png" /></a>
-    <h1>Create new task</h1>
-</div>
-<hr />
-<div class="row create">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DueDate" class="control-label"></label>
-                <input asp-for="DueDate" class="form-control" />
-                <span asp-validation-for="DueDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TodoListId" class="control-label"></label>
-                <select asp-for="TodoListId" class ="form-control" asp-items="ViewBag.TodoListId"></select>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Remind" /> @Html.DisplayNameFor(model => model.Remind)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="list-deteails-title">
+    <div>
+        <div class="back-button">
+            <a title="Previous" class="emoji-action" href="javascript:void(0);" onclick="history.go(-1);">&#11013;</a>
+        </div>
+        <div><h2>New task</h2></div>
     </div>
+</div>
+<div class="form">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input asp-for="Title" placeholder="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Description" placeholder="Description" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="date">Due</label>
+            <input asp-for="DueDate" class="form-control" />
+            <span asp-validation-for="DueDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <select asp-for="TodoListId" class="form-control" asp-items="ViewBag.TodoListId"></select>
+        </div>
+        <div class="form-group">
+            <label for="">Remind</label>
+            <input type="checkbox"
+                   asp-for="Remind"
+                   id="remind" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" />
+        </div>
+    </form>
 </div>
 
 @section Scripts {

@@ -1,0 +1,65 @@
+﻿@model ViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="list-deteails-title">
+    <div>
+        <div class="back-button">
+            <a title="Back to lists" class="emoji-action" asp-action="Index">&#11013;</a>
+        </div>
+        <div><h2>@Model.ToDoList.Name</h2></div>
+    </div>
+
+    <div class="actions">
+        <a title="Edit list" asp-controller="Home" asp-action="Edit" asp-route-id="@Model.ToDoList.Id" class="action edit">Edit list</a>
+        <a title="Edit list" asp-controller="Items" asp-action="Create" class="action new">New task</a>
+        @if (!Model.ShowCompletedTasks){
+            <a asp-controller="Home" asp-action="Details" asp-route-showCompletedTasks="@Model.ShowCompletedTasks" class="action completed">Completed tasks</a>
+        }
+        else {
+            <a asp-controller="Home" asp-action="Details" asp-route-showCompletedTasks="!@Model.ShowCompletedTasks" class="action completed-active">Hide completed tasks</a>
+
+        }
+    </div>
+</div>
+<div class="lists">
+    @if (Model.ToDoItems.Count(i => i.Status != ToDoAppModel.ItemStatus.Completed) == 0 && !Model.ShowCompletedTasks) 
+    {
+        <h3>You have no active tasks!</h3>
+    } 
+    else 
+    {
+        @foreach (var item in Model.ToDoItems)
+        {
+            <partial name="ItemSummary" model="item" />
+        }
+    }
+</div>
+
+@foreach (var item in Model.ToDoItems) 
+{
+    @if (item.Remind == true && item.Status != ToDoAppModel.ItemStatus.Completed)
+    {
+        @if (item.DueDate.Date == DateTime.Now.Date)
+        {
+            <script>
+
+                
+                alert('Do not forget about task: @item.Title!');
+
+                
+
+            </script>
+        }
+    }
+}
+
+<div class="pagination">
+    <div page-model="@Model.PagingInfo" page-action="Details" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark"
+         page-class-selected="btn-primary">
+    </div>
+</div>

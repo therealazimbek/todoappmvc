@@ -1,0 +1,31 @@
+﻿@model ToDoAppModel.ToDoList
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="list-deteails-title">
+    <div>
+        <div class="back-button">
+            <a title="Previous" class="emoji-action" href="javascript:void(0);" onclick="history.go(-1);">&#11013;</a>
+        </div>
+        <div><h2>New list</h2></div>
+    </div>
+</div>
+<div class="form">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input asp-for="Name" placeholder="New name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

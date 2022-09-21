@@ -1,0 +1,392 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital@1&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Flex layout*/
+
+@keyframes color {
+    0% {
+        background: #33cccc;
+    }
+
+    20% {
+        background: #33cc36;
+    }
+
+    40% {
+        background: #b8cc33;
+    }
+
+    60% {
+        background: #fcca00;
+    }
+
+    80% {
+        background: #33cc36;
+    }
+
+    100% {
+        background: #33cccc;
+    }
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    font-family: "Roboto Serif", sans-serif;
+    /* background: #33cccc; Fallback */
+    /* animation: color 9s infinite linear; */
+
+    background-color: #4158d0;
+    background-image: linear-gradient( 43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100% );
+}
+
+.flex-item {
+    flex-basis: 50px;
+}
+
+.item-3 {
+    flex-grow: 1;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+/* header */
+.header-nav {
+    padding: 10px 20px;
+    color: white;
+    font-family: "Satisfy", cursive;
+    font-size: 35px;
+}
+
+    .header-nav:hover {
+        background: white;
+        color: black;
+        border-radius: 15px;
+    }
+
+div.main-container {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Footer */
+p.footer-text {
+    color: white;
+    font-family: "Satisfy", cursive;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+/* main page */
+
+.greeting h1 {
+    font-family: "Satisfy", cursive;
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 80%;
+}
+
+.list {
+    /* border: 1px solid black; */
+    border-radius: 15px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+    .list:hover {
+        transform: scale(1.1);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    }
+
+span {
+    font-size: 12px;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+    span.ok {
+        background-color: #4158d0;
+        color: white;
+    }
+
+    span.today {
+        background-color: orange;
+        color: white;
+    }
+
+    span.late {
+        background-color: crimson;
+        color: white;
+    }
+
+    span.completed {
+        background-color: #33cc36;
+        color: white;
+    }
+
+.text-danger {
+    display: block;
+    color: red;
+    font-size: 14px;
+}
+
+.action {
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: white;
+}
+
+    .action:hover {
+        opacity: 0.8;
+    }
+
+.hide {
+    background: linear-gradient(135deg, #ffa000 20%, #ff5000 80%);
+}
+
+.delete {
+    background: radial-gradient(#dc3d1f, #85210a);
+}
+
+.new {
+    background: linear-gradient(33deg, #54e38e, #41c7af);
+}
+
+.edit {
+    background: linear-gradient(33deg, #41d8dd, #5583ee);
+}
+
+.completed {
+    background: linear-gradient(33deg, #c4e759, #6de195);
+}
+
+.completed-active {
+    color: #6de195;
+    font-weight: bold;
+    border: 2px solid #6de195;
+}
+
+.complete {
+    background: #33cc36;
+}
+
+.disabled {
+    background: #33cc36;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.hidden {
+    background: linear-gradient(33deg, #e13680, #a43ab2);
+}
+
+.hidden-active {
+    color: #e13680;
+    font-weight: bold;
+    border: 2px solid #e13680;
+}
+
+.completed-title {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* list create page */
+
+/* list update page */
+
+form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+}
+
+input, select {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+    input[type="submit"] {
+        background-color: #33cc36;
+        border: none;
+        color: white;
+    }
+
+        input[type="submit"]:hover {
+            cursor: pointer;
+        }
+
+    input.del {
+        background-color: #85210a;
+    }
+
+        input.del:hover {
+            opacity: 0.8;
+        }
+
+/* list detail page */
+
+.list-deteails-title {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    text-align: left;
+}
+
+.emoji-action {
+    font-size: 20px;
+}
+
+    .emoji-action:hover {
+        opacity: 0.7;
+    }
+
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+.reminder {
+    font-size: 16px;
+}
+
+/* item detail page */
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+    .styled-table tbody td.attribute {
+        background: linear-gradient(33deg, #e16e93, #9d2e7d);
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:hover {
+            font-weight: bold;
+            cursor: default;
+        }
+
+/* item create page */
+
+/* item update page */
+
+/* about page */
+
+a img {
+    width: 32px;
+}
+
+.skills {
+    text-align: left;
+}
+
+.text-info p {
+    margin-top: 10px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+    justify-content: center;
+}
+
+    .skills a {
+        padding: 10px 15px;
+        font-size: 18px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+        .skills a:hover {
+            transform: scale(1.2);
+        }
+
+/* little adaptive styling */
+@media screen and (max-width: 800px) {
+    div.main-container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .list {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .actions {
+        margin-top: 20px;
+        display: block;
+    }
+}
+
+/* pagination styles */
+
+.pagination {
+    margin-top: auto;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background: linear-gradient(33deg, #e13680, #a43ab2);
+    color: white;
+}
