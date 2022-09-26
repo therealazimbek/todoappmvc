@@ -1,8 +1,8 @@
 # ToDoApp
-## Author: Azimbek Abdipattaev
-##Project: Simple ToDoApp
-## Used technology: ASP.NET Core MVC
-## App functions:
+### Author: Azimbek Abdipattaev
+### Project: Simple ToDoApp
+### Used technology: ASP.NET Core MVC
+### App functions:
 1) View list of ToDo lists
 2) Hide lists from view or delete from database
 3) Modify lists
